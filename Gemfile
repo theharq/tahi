@@ -45,7 +45,6 @@ gem "fog"
 gem "unf"
 gem 'rails_admin'
 gem "chosen-rails", "~> 1.1.0"
-gem 'newrelic_rpm'
 gem "rest_client", "~> 1.7.3"
 gem 'gepub'
 gem 'rubyzip', require: 'zip'
@@ -64,6 +63,10 @@ gem 'spring'
 gem 'omniauth-cas', github: "dandorman/omniauth-cas", ref: "83210ff52667c2c4574666dcfc9b577542fb595f"
 # NOTE: Using this fork because it uses a compatible omniauth version
 # https://github.com/dlindahl/omniauth-cas/pull/28
+
+group :staging, :production do
+  gem 'newrelic_rpm'
+end
 
 group :staging, :performance, :production do
   gem 'heroku-deflater'
