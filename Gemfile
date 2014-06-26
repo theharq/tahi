@@ -58,7 +58,6 @@ gem 'omniauth-oauth2'
 gem 'faraday_middleware'
 gem 'ordinalize'
 gem 'migration_data'
-gem 'bugsnag'
 gem 'spring'
 gem 'omniauth-cas', github: "dandorman/omniauth-cas", ref: "83210ff52667c2c4574666dcfc9b577542fb595f"
 # NOTE: Using this fork because it uses a compatible omniauth version
@@ -66,6 +65,7 @@ gem 'omniauth-cas', github: "dandorman/omniauth-cas", ref: "83210ff52667c2c45746
 
 group :staging, :production do
   gem 'newrelic_rpm'
+  gem 'bugsnag'
 end
 
 group :staging, :performance, :production do
