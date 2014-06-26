@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_bugsnag_notify :add_user_info_to_bugsnag
+  # before_bugsnag_notify :add_user_info_to_bugsnag
 
   # http_basic_authenticate_with name: "tahi", password: "tahi3000", if: -> { %w(production staging).include? Rails.env }
 
