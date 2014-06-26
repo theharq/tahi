@@ -8,17 +8,20 @@ Thread.new do
   file_name = "#{Time.now.iso8601}-object-space.csv"
   CSV.open(Rails.root.join(file_name), "wb") do |csv|
     # Write CSV headers.
-    csv << [:TOTAL, :FREE, :T_OBJECT, :T_CLASS, :T_MODULE, :T_FLOAT,
+    csv << [:TIME, :TOTAL, :FREE, :T_OBJECT, :T_CLASS, :T_MODULE, :T_FLOAT,
             :T_STRING, :T_REGEXP, :T_ARRAY, :T_HASH, :T_STRUCT,
             :T_BIGNUM, :T_FILE, :T_DATA, :T_MATCH, :T_COMPLEX,
             :T_RATIONAL, :T_NODE, :T_ICLASS]
+    time = 0
+    time_increment = 30
     100.times do
       # Write current values.
-      values = ObjectSpace.count_objects.values
+      values = [time] + ObjectSpace.count_objects.values
+      time += time_increment
       puts "Writing current object space status:"
       puts values.to_s
       csv << values
-      sleep 30
+      sleep time_increment
     end
     puts "Done collecting values."
   end
