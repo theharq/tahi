@@ -13,7 +13,7 @@ module JournalServices
               task_types: [PaperEditorTask, StandardTasks::TechCheckTask, PaperAdminTask].map(&:to_s)
             }, {
               name: "Assign Reviewers",
-              task_types: [PaperReviewerTask].map(&:to_s)
+              task_types: [PaperReviewers::Task].map(&:to_s)
             }, {
               name: "Get Reviews",
               task_types: []

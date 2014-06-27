@@ -20,6 +20,9 @@ class TaskAdminAssigneeUpdater
   private
 
   def related_tasks
+    # any incomplete admin tasks that have been not been assigned
+    # OR
+    # any incomplete admin tasks that have been assigned to the previous admin
     paper.tasks.without(task).for_admins.incomplete.assigned_to(nil, previous_task_admin)
   end
 

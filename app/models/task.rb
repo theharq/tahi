@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  include EventStreamNotifier
+  # include EventStreamNotifier
 
   cattr_accessor :metadata_types
 

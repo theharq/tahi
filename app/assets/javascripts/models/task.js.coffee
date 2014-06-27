@@ -22,7 +22,8 @@ ETahi.Task = DS.Model.extend ETahi.CardThumbnailObserver,
 
   relationshipsToSerialize: []
 
-ETahi.PaperReviewerTask = ETahi.Task.extend
+ETahi.PaperReviewersTask = ETahi.Task.extend
+  qualifiedType: "PaperReviewers::Task"
   reviewers: DS.hasMany('user')
   relationshipsToSerialize: ['reviewers']
 

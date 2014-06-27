@@ -1,1 +1,1 @@
-ETahi.PaperReviewerOverlayController = ETahi.TaskController.extend()
+ETahi.PaperReviewersOverlayController = ETahi.TaskController.extend()
