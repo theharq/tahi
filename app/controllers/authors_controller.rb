@@ -3,20 +3,21 @@ class AuthorsController < ApplicationController
   respond_to :json
 
   def create
-    author = Author.create author_params
-    respond_with author
+    director = AuthorDirector.new
+    director.create(author_params)
+    respond_with director.author
   end
 
   def update
-    author = Author.find(params[:id])
-    author.update author_params
-    respond_with author
+    director = AuthorDirector.new(Author.find(params[:id]))
+    director.update author_params
+    respond_with director.author
   end
 
   def destroy
-    author = Author.find(params[:id])
-    author.destroy
-    respond_with author
+    AuthorDirector.new(Author.find(params[:id]))
+    director.destroy
+    respond_with director.author
   end
 
   private

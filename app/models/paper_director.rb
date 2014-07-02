@@ -1,10 +1,6 @@
 class PaperDirector
   attr_reader :paper
 
-  def self.add_class_listener(target_method, klass, method_sym)
-    Bus.subscribe("paper:#{target_method}", klass, method_sym)
-  end
-
   def initialize(paper)
     @paper = paper
   end
