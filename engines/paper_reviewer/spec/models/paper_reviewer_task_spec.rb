@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe PaperReviewerTask do
+describe PaperReviewer::Task do
   describe "defaults" do
-    subject(:task) { PaperReviewerTask.new }
+    subject(:task) { PaperReviewer::Task.new }
     specify { expect(task.title).to eq 'Assign Reviewers' }
     specify { expect(task.role).to eq 'editor' }
   end
@@ -25,7 +25,7 @@ describe PaperReviewerTask do
   end
 
   describe "#reviewer_ids=" do
-    let(:task) { PaperReviewerTask.create!(phase: phase) }
+    let(:task) { PaperReviewer::Task.create!(phase: phase) }
 
     it "creates reviewer paper roles only for new ids" do
       PaperRole.create! paper: paper, reviewer: true, user: albert
@@ -86,7 +86,7 @@ describe PaperReviewerTask do
   end
 
   describe "#reviewer_ids" do
-    let(:task) { PaperReviewerTask.create! phase: paper.phases.first }
+    let(:task) { PaperReviewer::Task.create! phase: paper.phases.first }
     let (:reviewer1) { FactoryGirl.create :user }
     let (:reviewer2) { FactoryGirl.create :user }
 

@@ -4,7 +4,7 @@ class Journal < ActiveRecord::Base
                       "UploadManuscript::Task",
                       "PaperEditorTask",
                       "Declaration::Task",
-                      "PaperReviewerTask",
+                      "PaperReviewer::Task",
                       "RegisterDecisionTask",
                       "StandardTasks::TechCheckTask",
                       "StandardTasks::FigureTask",
