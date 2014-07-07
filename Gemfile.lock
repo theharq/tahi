@@ -55,6 +55,12 @@ PATH
       rails (~> 4.1.1)
 
 PATH
+  remote: engines/reviewer_report
+  specs:
+    reviewer_report (0.0.1)
+      rails (~> 4.1.1)
+
+PATH
   remote: engines/standard_tasks
   specs:
     standard_tasks (0.0.1)
@@ -534,6 +540,7 @@ DEPENDENCIES
   rails_12factor
   rails_admin
   rest_client (~> 1.7.3)
+  reviewer_report!
   rspec-its (~> 1.0.0.pre)
   rspec-rails (~> 3.0.0.beta2)
   rubyzip

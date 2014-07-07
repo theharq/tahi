@@ -16,6 +16,7 @@ gem 'data_availability',      path: 'engines/data_availability'
 gem 'financial_disclosure',   path: 'engines/financial_disclosure'
 gem 'competing_interests',    path: 'engines/competing_interests'
 gem 'paper_reviewer',         path: 'engines/paper_reviewer'
+gem 'reviewer_report',        path: 'engines/reviewer_report'
 
 # Gems
 gem 'rails', '4.1.1'

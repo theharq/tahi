@@ -39,6 +39,7 @@
 //= require financial_disclosure/application
 //= require competing_interests/application
 //= require paper_reviewer/application
+//= require reviewer_report/application
 
 (function(context) {
   context.ETahi = Ember.Application.create({

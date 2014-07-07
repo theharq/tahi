@@ -1,4 +1,4 @@
 ETahi.ReviewerReportOverlayView = ETahi.OverlayView.extend
-  templateName: 'overlays/reviewer_report_overlay'
+  templateName: 'reviewer_report/reviewer_report_overlay'
   layoutName: 'layouts/assignee_overlay_layout'
 
