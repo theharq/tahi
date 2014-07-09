@@ -5,11 +5,11 @@ module PaperReviewer
     has_many :reviewers, serializer: UserSerializer, include: true, root: :users
 
     def reviewers
-      object.reviewers.includes(:affiliations)
+      object.paper.reviewers.includes(:affiliations)
     end
 
     def journal_reviewers
-      object.journal_reviewers.includes(:affiliations)
+      object.journal.reviewers.includes(:affiliations)
     end
   end
 end
