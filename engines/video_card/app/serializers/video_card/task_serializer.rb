@@ -1,4 +1,4 @@
 module VideoCard
-	class TaskSerializer < ::TaskSerializer
-	end
+  class TaskSerializer < ::TaskSerializer
+  end
 end
