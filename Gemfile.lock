@@ -49,6 +49,12 @@ PATH
     upload_manuscript (0.0.1)
       rails (~> 4.1.1)
 
+PATH
+  remote: engines/video_card
+  specs:
+    video_card (0.0.1)
+      rails (~> 4.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -538,4 +544,5 @@ DEPENDENCIES
   unf
   upload_manuscript!
   vcr
+  video_card!
   webmock

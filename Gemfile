@@ -11,6 +11,7 @@ end
 gem 'standard_tasks',         path: 'engines/standard_tasks'
 gem 'supporting_information', path: 'engines/supporting_information'
 gem 'upload_manuscript',      path: 'engines/upload_manuscript'
+gem 'video_card',	      path: 'engines/video_card'
 
 # Gems
 gem 'rails', '4.1.1'

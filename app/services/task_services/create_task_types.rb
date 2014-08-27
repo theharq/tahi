@@ -20,6 +20,7 @@ module TaskServices
         {kind: "StandardTasks::TechCheckTask",                  default_role: "admin",    default_title: "Tech Check"},
         {kind: "SupportingInformation::Task",                   default_role: "author",   default_title: "Supporting Info"},
         {kind: "UploadManuscript::Task",                        default_role: "author",   default_title: "Upload Manuscript"},
+        {kind: "VideoCard::Task",                               default_role: "author",   default_title: "Video Card"},
       ]
 
       types.map do |attributes|
