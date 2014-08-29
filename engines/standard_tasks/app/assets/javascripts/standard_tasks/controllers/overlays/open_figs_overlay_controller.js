@@ -16,9 +16,18 @@ ETahi.OpenFigsOverlayController = ETahi.TaskController.extend({
   images: function() {
     var html = this.get('openFigsHtml');
     return $('article img', html).toArray().map(function(i) {
+      var fullCaption = i.alt;
+      var citationIndex = fullCaption.indexOf('Citation:');
+      var caption = fullCaption.substr(citationIndex).substr(0, 255);
+      var titleIndexStart = fullCaption.indexOf('.') + 2;
+      var titleIndexEnd = citationIndex - 11;
+      var title = fullCaption.substr(titleIndexStart, titleIndexEnd);
+
       return Ember.Object.create({
         alt: i.alt,
-        src: i.src
+        src: i.src,
+        caption: caption,
+        title: title
       });
     });
   }.property('openFigsHtml'),
@@ -35,12 +44,18 @@ ETahi.OpenFigsOverlayController = ETahi.TaskController.extend({
   actions: {
     addFigure: function(image) {
       var postUrl = "/papers/" + this.get('litePaper.id') + "/figures";
-      $.post(postUrl, {url: image.src});
+      var store = this.store;
+
+      $.post(postUrl, {url: image.src}, function(data) {
+        store.pushPayload('figure', data);
+        store.getById('figure', data.figure.id).
+          set('caption', image.get('caption')).
+          save();
+      });
       image.set('added', true);
     },
 
     filterJournals: function(filter) {
-      console.log('===> filtering by:', filter);
       this.set('filter', filter);
     }
   }
