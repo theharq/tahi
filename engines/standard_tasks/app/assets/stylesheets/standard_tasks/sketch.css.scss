@@ -1,0 +1,21 @@
+.sketch-tools {
+  margin-bottom: 10px;
+}
+
+.sketch-control {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  color: #000;
+  font-weight: bold;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
+}
