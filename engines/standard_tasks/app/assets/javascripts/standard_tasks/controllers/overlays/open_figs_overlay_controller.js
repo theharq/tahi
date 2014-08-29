@@ -7,6 +7,7 @@ ETahi.OpenFigsOverlayController = ETahi.TaskController.extend({
     addFigure: function(image) {
       var postUrl = "/papers/" + this.get('litePaper.id') + "/figures";
       $.post(postUrl, {url: image.src});
+      image.set('added', true);
     }
   }
 });

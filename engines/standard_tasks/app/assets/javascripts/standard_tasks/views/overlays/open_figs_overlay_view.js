@@ -4,12 +4,12 @@ ETahi.OpenFigsOverlayView = ETahi.OverlayView.extend({
 
   setup: function() {
     var html = this.controller.get('openFigsHtml');
-    var images = $('article img', html).map(function(_, i) {
-      return {
+    var images = $('article img', html).toArray().map(function(i) {
+      return Ember.Object.create({
         alt: i.alt,
         src: i.src
-      };
+      });
     });
-    this.set('images', images.toArray());
+    this.set('images', images);
   }.on('didInsertElement')
 });

@@ -9,6 +9,10 @@
     <h2 class="attachment-thumbnail-title" {{action "toggleEditState" "attachment-title-field" on="doubleClick"}}>
       <button class="button--green button-secondary" {{action addFigure image}}>Add to my figures</button>
     </h2>
+    {{#if image.added}}
+    <br />
+    <span class="overlay-paper-link">The image has been added to your paper.</span>
+    {{/if}}
   </div>
 </div>
 {{/each}}
