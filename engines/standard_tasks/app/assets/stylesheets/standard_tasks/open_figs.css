@@ -1,7 +1,3 @@
-#openfig-images img {
-  max-width: 840px;
-}
-
-#openfig-images li {
-  padding-bottom: 100px;
+#openfig-images img.preview {
+  max-width: 360px;
 }
