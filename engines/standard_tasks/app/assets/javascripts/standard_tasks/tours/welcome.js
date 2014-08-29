@@ -1,5 +1,9 @@
 var cardTutorial = {
   id: "card-tutorial",
+  onEnd: function() {
+    // faking it
+    history.back();
+  },
   steps: [
     {
       title: "All about the cards!",
@@ -42,6 +46,6 @@ var cardTutorial = {
       target: "h2.overlay-header-title",
       placement: "bottom",
       zindex: 33000
-    },
+    }
   ]
 };
