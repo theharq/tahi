@@ -17,5 +17,11 @@ ETahi.SketchOverlayView = ETahi.OverlayView.extend({
     });
 
     $('#colors-sketch').sketch();
-  }.on('didInsertElement')
+  }.on('didInsertElement'),
+
+  actions: {
+    saveImage: function(e) {
+      this.get('controller').send('saveImage', this.$('#colors-sketch').get(0).toDataURL("image/png"));
+    }
+  }
 });

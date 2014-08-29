@@ -1,3 +1,3 @@
 ETahi.WhiteboardImage = DS.Model.extend
-  sketchTask: DS.belongsTo('sketchTask', inverse: 'WhiteboardImage')
+  task: DS.belongsTo('sketchTask')
   data: DS.attr('string')
