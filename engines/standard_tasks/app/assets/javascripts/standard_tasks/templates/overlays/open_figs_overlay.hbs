@@ -1,6 +1,15 @@
 <h1>Quaker Steak & Lube</h1>
 
-{{#each image in view.images}}
+<label for="editor">Journal</label>
+{{chosen content=journals
+         prompt="All"
+         value=null
+         class=""
+         changeAction="filterJournals"
+         optionValuePath="content"
+         optionLabelPath="content"}}
+
+{{#each image in filteredImages}}
 <div id="openfig-images" class="attachment-thumbnail">
   <div class="attachment-thumbnail-image">
     <img class="preview" {{bind-attr src=image.src}} {{bind-attr alt=img.alt}}>
