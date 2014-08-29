@@ -1,0 +1,10 @@
+<h1>Quaker Steak & Lube</h1>
+
+<ul id='openfig-images'>
+{{#each image in view.images}}
+  <li>
+    <img {{bind-attr src=image.url}}" />
+    <button {{action addFigure image}}>Add to my figures</button>
+  </li>
+{{/each}}
+</ul>
