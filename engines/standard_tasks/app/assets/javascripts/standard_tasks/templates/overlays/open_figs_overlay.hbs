@@ -1,10 +1,14 @@
 <h1>Quaker Steak & Lube</h1>
 
-<ul id='openfig-images'>
 {{#each image in view.images}}
-  <li>
-    <img {{bind-attr src=image.url}}" />
-    <button {{action addFigure image}}>Add to my figures</button>
-  </li>
+<div id="openfig-images" class="attachment-thumbnail">
+  <div class="attachment-thumbnail-image">
+    <img class="preview" {{bind-attr src=image.src}} {{bind-attr alt=img.alt}}>
+  </div>
+  <div class="attachment-thumbnail-text-content">
+    <h2 class="attachment-thumbnail-title" {{action "toggleEditState" "attachment-title-field" on="doubleClick"}}>
+      <button class="button--green button-secondary" {{action addFigure image}}>Add to my figures</button>
+    </h2>
+  </div>
+</div>
 {{/each}}
-</ul>
