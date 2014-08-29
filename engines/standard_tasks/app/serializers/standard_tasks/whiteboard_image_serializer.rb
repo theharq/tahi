@@ -1,6 +1,6 @@
 module StandardTasks
   class WhiteboardImageSerializer < ActiveModel::Serializer
-    attributes :data
-    has_one :task, embed: :ids
+    attributes :data, :id
+    has_one :task, embed: :id, polymorphic: true
   end
 end

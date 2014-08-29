@@ -1,5 +1,5 @@
 module StandardTasks
-  class SketchTask < Task
+  class SketchTask < ::Task
     title "Sketch Task"
     role "author"
 
