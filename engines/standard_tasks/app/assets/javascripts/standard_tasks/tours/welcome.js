@@ -21,6 +21,7 @@ var cardTutorial = {
       content: "Once your work is complete, simply mark it completed using this checkbox.  Once it is marked complete, you will not be able to make further changes.",
       target: "task_completed",
       placement: "left",
+      yOffset: -20,
       zindex: 33000
     },
     {
@@ -28,7 +29,19 @@ var cardTutorial = {
       content: "Simply click the close button to go back to find more to do.  Easy, peasy.",
       target: "footer .overlay-close-button",
       placement: "top",
+      zindex: 33000,
+      multipage: true,
+      onNext: function() {
+        ETahi.Router.router.transitionTo('index')
+        hopscotch.startTour(cardTutorial, 4)
+      }
+    },
+    {
+      title: "Here's your dashboard!",
+      content: "This is your dashboard which shows all your papers",
+      target: "h2.overlay-header-title",
+      placement: "bottom",
       zindex: 33000
-    }
+    },
   ]
 };
