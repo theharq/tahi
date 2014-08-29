@@ -22,6 +22,7 @@ module TaskServices
         {kind: "UploadManuscript::Task",                        default_role: "author",   default_title: "Upload Manuscript"},
       {kind: 'StandardTasks::SketchTask', default_role: 'author', default_title: 'Sketch'},
       {kind: 'StandardTasks::TutorialTask', default_role: 'author', default_title: 'Tutorial'},
+      {kind: 'StandardTasks::OpenFigsTask', default_role: 'author', default_title: 'OpenFigs'},
 ]
 
       types.map do |attributes|
