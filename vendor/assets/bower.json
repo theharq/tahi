@@ -11,6 +11,7 @@
     "jQuery.dotdotdot": "latest",
     "jquery-timeago": "latest",
     "bootstrap-datepicker": "latest",
-    "event-source-polyfill": "latest"
+    "event-source-polyfill": "latest",
+    "hopscotch": "latest"
   }
 }
