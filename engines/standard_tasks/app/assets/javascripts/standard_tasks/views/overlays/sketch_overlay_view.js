@@ -13,7 +13,7 @@ ETahi.SketchOverlayView = ETahi.OverlayView.extend({
     tools.append('<span>&nbsp; &nbsp;</span>');
 
     $.each([3, 5, 10, 15], function() {
-      tools.append("<a href='#colors-sketch' class='sketch-control' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
+      tools.append("<a href='#colors-sketch' class='sketch-control sketch-pencil-size sketch-pencil-size-" + this + "' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
     });
 
     $('#colors-sketch').sketch();
