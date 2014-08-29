@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827200137) do
+ActiveRecord::Schema.define(version: 20140829150457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -289,6 +289,13 @@ ActiveRecord::Schema.define(version: 20140827200137) do
   end
 
   add_index "standard_tasks_funders", ["task_id"], name: "index_standard_tasks_funders_on_task_id", using: :btree
+
+  create_table "standard_tasks_whiteboard_images", force: true do |t|
+    t.integer "task_id"
+    t.binary  "data"
+  end
+
+  add_index "standard_tasks_whiteboard_images", ["task_id"], name: "index_standard_tasks_whiteboard_images_on_task_id", using: :btree
 
   create_table "supporting_information_files", force: true do |t|
     t.integer  "paper_id"

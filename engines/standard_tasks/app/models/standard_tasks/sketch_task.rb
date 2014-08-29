@@ -3,8 +3,6 @@ module StandardTasks
     title "Sketch Task"
     role "author"
 
-    def active_model_serializer
-      TaskSerializer
-    end
+    has_one :whiteboard_image, foreign_key: :task_id
   end
 end
