@@ -147,6 +147,26 @@ ActiveRecord::Schema.define(version: 20140829150457) do
     t.string   "status",     default: "processing"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "message_participants", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "task_id"
+    t.integer  "participant_id"
+  end
+
+  add_index "message_participants", ["participant_id"], name: "index_message_participants_on_participant_id", using: :btree
+  add_index "message_participants", ["task_id"], name: "index_message_participants_on_task_id", using: :btree
+
+  create_table "notes", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+>>>>>>> WIP: Notes card
   create_table "paper_reviews", force: true do |t|
     t.integer  "task_id"
     t.text     "body"

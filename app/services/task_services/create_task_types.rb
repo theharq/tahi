@@ -23,6 +23,7 @@ module TaskServices
       {kind: 'StandardTasks::SketchTask', default_role: 'author', default_title: 'Sketch'},
       {kind: 'StandardTasks::TutorialTask', default_role: 'author', default_title: 'Tutorial'},
       {kind: 'StandardTasks::OpenFigsTask', default_role: 'author', default_title: 'OpenFigs'},
+      {kind: 'StandardTasks::NotesTask', default_role: 'author', default_title: 'Notes'},
 ]
 
       types.map do |attributes|

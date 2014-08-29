@@ -1,0 +1,16 @@
+<h1>Notes</h1>
+
+<div class="form-group">
+  {{input value=noteTitle placeholder="What's your note about?" class="form-control"}}
+</div>
+<div class="form-group">
+  {{textarea value=noteBody class="form-control" placeholder="Note goes here"}}
+</div>
+<div class="form-group">
+  <button {{action 'createNote'}} class="btn btn-default">Create note</button>
+</div>
+
+{{#each note in notes}}
+  {{render 'note' note}}
+{{/each}}
+

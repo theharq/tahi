@@ -115,6 +115,8 @@ Tahi::Application.routes.draw do
 
   resource :event_stream, only: :show
 
+  resource :notes, only: :create
+
 
   get '*route' => 'ember#index'
   root 'ember#index'
