@@ -1,0 +1,49 @@
+<div class="graphvizzz">
+</div>
+
+<script type="text/vnd.graphviz" id="cluster2">
+digraph G {
+  compound=true;
+
+
+  "author" -> "have an idea" -> "do some research" -> "write a paper" -> "paper"
+
+  "academic editor" -> "review paper" -> "paper"
+
+  "tech checker" -> "check the tech" -> "paper"
+
+  "editor" -> "publish" -> "paper"
+
+  "adam wants to know about a" -> "paper"
+
+}
+</script>
+
+<script>
+  function inspect(s) {
+    return "<pre>" + s.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;") + "</pre>"
+  }
+
+  function src(id) {
+    return document.getElementById(id).innerHTML;
+  }
+
+  function render_graphviz(id, format) {
+    var result;
+    try {
+      result = Viz(src(id), format);
+      if (format === "svg")
+        return result;
+      else
+        return inspect(result);
+    } catch(e) {
+      return inspect(e.toString());
+    }
+  }
+
+  window.graphviz = $(render_graphviz("cluster2", "svg", "neato"));
+
+  $(function(){
+    $(".graphvizzz").prepend(window.graphviz);
+  });
+</script>
