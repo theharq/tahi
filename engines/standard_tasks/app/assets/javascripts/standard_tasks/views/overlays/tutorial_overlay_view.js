@@ -3,5 +3,10 @@ ETahi.TutorialOverlayView = ETahi.OverlayView.extend({
   layoutName: "layouts/overlay_layout",
 
   setup: function() {
+
+    $('#tahi-tour').click(function(){
+      hopscotch.startTour(cardTutorial)
+    });
+
   }.on('didInsertElement')
 });
