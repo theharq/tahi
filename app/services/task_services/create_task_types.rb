@@ -24,6 +24,7 @@ module TaskServices
       {kind: 'StandardTasks::TutorialTask', default_role: 'author', default_title: 'Tutorial'},
       {kind: 'StandardTasks::OpenFigsTask', default_role: 'author', default_title: 'OpenFigs'},
       {kind: 'StandardTasks::NotesTask', default_role: 'author', default_title: 'Notes'},
+      {kind: 'StandardTasks::MapTask', default_role: 'author', default_title: 'Map'},
 ]
 
       types.map do |attributes|
