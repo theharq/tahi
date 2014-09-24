@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20140923143351) do
   end
 
   create_table "journal_task_types", force: true do |t|
+    t.json    "template"
     t.integer "task_type_id"
     t.integer "journal_id"
     t.string  "title"
@@ -304,8 +305,7 @@ ActiveRecord::Schema.define(version: 20140923143351) do
   create_table "task_templates", force: true do |t|
     t.integer "journal_task_type_id"
     t.integer "phase_template_id"
-    t.json    "template",             default: [], null: false
-    t.string  "title"
+    t.json    "template"
   end
 
   add_index "task_templates", ["journal_task_type_id"], name: "index_task_templates_on_journal_task_type_id", using: :btree

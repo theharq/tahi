@@ -9,6 +9,7 @@ feature 'Message Cards', js: true do
     assign_journal_role(journal, albert, :admin)
     sign_in_page = SignInPage.visit
     sign_in_page.sign_in admin
+    paper.paper_roles.build(user: albert, role: PaperRole::COLLABORATOR).save
   end
 
 
@@ -27,7 +28,6 @@ feature 'Message Cards', js: true do
     let(:participants) { [albert] }
     scenario "Admin can add a new message" do
       task_manager_page = TaskManagerPage.visit paper
-
       needs_editor_phase = task_manager_page.phase 'Assign Editor'
       needs_editor_phase.new_card overlay: NewMessageCardOverlay,
         subject: subject_text,

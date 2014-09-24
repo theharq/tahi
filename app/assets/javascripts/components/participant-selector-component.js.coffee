@@ -1,19 +1,23 @@
 ETahi.ParticipantSelectorComponent = Ember.Component.extend
-  everyone: []
   currentParticipants: []
 
   availableParticipants: (->
-    return [] if Em.isEmpty @get('everyone.content')
+    return [] if @get('everyone.isPending')
 
     currentParticipantIds = @get('currentParticipants').mapProperty('id')
+
     (@get('everyone.content').reject (user) ->
-      currentParticipantIds.contains(user.id)).map (user) ->
-        Ember.Object.create user
+      currentParticipantIds.contains("" + user.id)).map (user) ->
+        _.extend(user, text: user.full_name)
   ).property('everyone.content.[]', 'currentParticipants.@each')
 
   remoteUrl: (->
-    "/tasks/#{this.get('taskId')}/non_collaborators/%QUERY"
+    "/filtered_users/non_participants/#{@get('taskId')}/%QUERY"
   ).property()
+
+  resultsTemplate: (user) ->
+    debugger
+    Handlebars.compile('<strong>{{user.full_name}}</strong><br><div class="tt-suggestion-sub-value">{{user.info}}</div>')
 
   actions:
     addParticipant: (newParticipant) ->
