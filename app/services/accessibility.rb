@@ -2,7 +2,7 @@ class Accessibility
 
   attr_accessor :resource, :action
 
-  def initialize(resource, action=nil)
+  def initialize(resource, action=:show)
     @resource = resource
     @action = action
   end
@@ -19,8 +19,8 @@ class Accessibility
   private
 
   def filtered_users(filter)
-    connected_users.map do |user|
-      user if policy(user).send(action)
+    connected_users.select do |user|
+      policy(user).send("#{action}?")
     end.uniq
   end
 
