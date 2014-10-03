@@ -1,6 +1,10 @@
 class PapersPolicy < ApplicationPolicy
   allow_params :paper
 
+  def connected_users
+    [paper.user, paper.assigned_users, paper.tasks.flat_map(&:participants)].flatten.uniq
+  end
+
   def show?
     current_user.admin? || author? || paper_collaborator? || paper_admin? || paper_editor? || paper_reviewer? || can_view_manuscript_manager?
   end
