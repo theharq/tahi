@@ -15,11 +15,19 @@ ETahi.EventStream = Em.Object.extend
   msgEnqueue: (msg) ->
     @get('messageQueue').unshiftObject(msg)
 
+  #TODO: move this to someplace more global
+  debug: (description, obj) ->
+    if ETahi.environment == 'development'
+      console.groupCollapsed(description)
+      console.log(obj)
+      console.groupEnd()
+
   processMessages: ->
     unless @get('wait')
       if msg = @messageQueue.popObject()
         msg.parsedData = JSON.parse(msg.data)
         if @shouldProcessMessage(msg)
+          @debug("Event Stream: '#{msg.parsedData.action}'", msg)
           @msgResponse(msg.parsedData)
     Ember.run.later(@, 'processMessages', [], interval)
 
@@ -46,6 +54,7 @@ ETahi.EventStream = Em.Object.extend
         @set('eventSource', new EventSource(data.url))
         Ember.$(window).unload => @stop()
         @set('eventNames', data.eventNames)
+        @debug("Event Stream: updated channels", data.eventNames)
         data.eventNames.forEach (eventName) =>
           @addEventListener(eventName)
         @play()
