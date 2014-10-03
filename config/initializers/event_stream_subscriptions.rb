@@ -4,13 +4,18 @@ TahiNotifier.subscribe("task:created", "task:updated", "comment:*") do |payload|
   paper_id   = payload[:paper_id]
   meta       = payload[:meta]
 
+  paper = Paper.find(paper_id)
   task = Task.find(task_id)
   serializer = task.active_model_serializer.new(task)
-  EventStream.post_event(
-    Paper,
-    paper_id,
-    serializer.as_json.merge(action: action, meta: meta).to_json
-  )
+
+  #TODO: Accessibility should take a Task record, not assume paper
+  Accessibility.new(paper).users.each do |user|
+    EventStream.post_event(
+      User,
+      user.id,
+      serializer.as_json.merge(action: action, meta: meta, user: user).to_json
+    )
+  end
 end
 
 TahiNotifier.subscribe("supporting_information/file:*", "figure:*", "paper:*", "question_attachment:*") do |payload|
