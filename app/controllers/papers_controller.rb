@@ -22,6 +22,14 @@ class PapersController < ApplicationController
   end
 
   def create
+    Analytics.track({
+      user_id: current_user.email,
+      event: 'Paper#create',
+      properties: {
+        paper: paper_params["short_title"]
+      }
+    })
+
     respond_with PaperFactory.create(paper_params, current_user)
   end
 
@@ -35,6 +43,16 @@ class PapersController < ApplicationController
       raise ActiveRecord::RecordInvalid, paper
     else
       unless paper_params.has_key?(:body) && paper_params[:body].nil? # To prevent body-disappearing issue
+        if paper_params["submitted"]
+          Analytics.track({
+            user_id: current_user.email,
+            event: 'Paper#updated (submitted=true)',
+            properties: {
+              paper: paper_params["short_title"]
+            }
+          })
+        end
+
         paper.update(paper_params)
       end
     end
@@ -45,6 +63,15 @@ class PapersController < ApplicationController
     manuscript = paper.manuscript || paper.build_manuscript
     manuscript.update_attribute :status, "processing"
     DownloadManuscriptWorker.perform_async manuscript.id, params[:url]
+
+    Analytics.track({
+      user_id: current_user.email,
+      event: 'Paper#upload',
+      properties: {
+        upload: manuscript["source"]
+      }
+    })
+
     render json: paper
   end
 
