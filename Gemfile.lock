@@ -84,6 +84,7 @@ GEM
       activerecord (>= 3.0)
     addressable (2.3.6)
     american_date (1.1.0)
+    analytics-ruby (2.0.10)
     arel (5.0.1.20140414130214)
     barber (0.4.2)
       ember-source
@@ -477,6 +478,7 @@ DEPENDENCIES
   activemodel-globalid!
   acts_as_list
   american_date
+  analytics-ruby
   bourbon
   bower-rails
   bugsnag
