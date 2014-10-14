@@ -78,6 +78,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def after_database_authentication
+    Analytics.track({
+      user_id: self.email,
+      event: 'Login'
+    })
+  end
+
   private
 
   def add_flows
