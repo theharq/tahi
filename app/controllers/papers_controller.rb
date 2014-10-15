@@ -22,13 +22,14 @@ class PapersController < ApplicationController
   end
 
   def create
-    Analytics.track({
-      user_id: current_user.email,
+    TahiAnalytics.track(
+      user_id: current_user.id,
       event: 'Paper#create',
       properties: {
         paper: paper_params["short_title"]
+        email: current_user.email
       }
-    })
+    )
 
     respond_with PaperFactory.create(paper_params, current_user)
   end
@@ -44,13 +45,14 @@ class PapersController < ApplicationController
     else
       unless paper_params.has_key?(:body) && paper_params[:body].nil? # To prevent body-disappearing issue
         if paper_params["submitted"]
-          Analytics.track({
+          TahiAnalytics.track(
             user_id: current_user.email,
             event: 'Paper#updated (submitted=true)',
             properties: {
-              paper: paper_params["short_title"]
+              paper: paper_params["short_title"],
+              doi: paper_params["id"]
             }
-          })
+          )
         end
 
         paper.update(paper_params)
@@ -64,13 +66,14 @@ class PapersController < ApplicationController
     manuscript.update_attribute :status, "processing"
     DownloadManuscriptWorker.perform_async manuscript.id, params[:url]
 
-    Analytics.track({
-      user_id: current_user.email,
+    TahiAnalytics.track(
+      user_id: current_user.id,
       event: 'Paper#upload',
       properties: {
         upload: manuscript["source"]
+        email: current_user.email
       }
-    })
+    )
 
     render json: paper
   end

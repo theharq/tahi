@@ -46,10 +46,7 @@ class ApplicationController < ActionController::Base
 
   # customize devise signout path
   def after_sign_out_path_for(resource_or_scope)
-    Analytics.track({
-      user_id: current_user.email,
-      event: 'Logout'
-    })
+    TahiAnalytics.track(user_id: current_user.email, event: 'Logout')
 
     new_user_session_path
   end

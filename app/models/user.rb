@@ -79,10 +79,7 @@ class User < ActiveRecord::Base
   end
 
   def after_database_authentication
-    Analytics.track({
-      user_id: self.email,
-      event: 'Login'
-    })
+    TahiAnalytics.track(user_id: self.email, event: 'Login')
   end
 
   private

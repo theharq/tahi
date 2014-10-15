@@ -79,4 +79,6 @@ Tahi::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.carrierwave_storage = :fog
+
+  config.analytics_enabled? = ENV.has_key 'SEGMENT_IO_WRITE_KEY'
 end
