@@ -1,4 +1,4 @@
-{{#view ETahi.ControlBarView}}
+{{#view "controlBar"}}
   <div class="control-bar-inner-wrapper">
     <ul>
       <li class="control-bar-item">
@@ -23,7 +23,7 @@
       <div class="column-content">
         <ul class="cards">
           {{#each litePaper in flow.litePapers}}
-            {{view ETahi.FlowPaperView flow=flow litePaper=litePaper}}
+            {{view "flowPaper" flow=flow litePaper=litePaper}}
           {{/each}}
         </ul>
         {{#unless flow.litePapers}}

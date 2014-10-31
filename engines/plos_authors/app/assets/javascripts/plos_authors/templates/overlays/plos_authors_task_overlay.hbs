@@ -13,7 +13,7 @@
     {{/if}}
   {{/if}}
 
-  {{view ETahi.AuthorDropTargetView index=0}}
+  {{view "authorDropTarget" index=0}}
   {{#each authorWithErrors in sortedAuthorsWithErrors}}
     {{author-view
       isEditable=isEditable
@@ -22,6 +22,6 @@
       save="saveAuthor"
       plosAuthor=authorWithErrors.model
       errors=authorWithErrors.errors}}
-    {{view ETahi.AuthorDropTargetView index=authorWithErrors.model.position}}
+    {{view "authorDropTarget" index=authorWithErrors.model.position}}
   {{/each}}
 </div>

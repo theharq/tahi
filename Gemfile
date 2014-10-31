@@ -21,8 +21,8 @@ gem 'rack-timeout'
 gem 'pg'
 gem 'bower-rails'
 gem 'ember-rails'
-gem 'ember-source', '1.7.0'
-gem "ember-data-source", "~> 1.0.0.beta.9"
+gem 'ember-source', '1.8.0'
+gem "ember-data-source", "~> 1.0.0.beta.11"
 gem 'sass-rails', '~> 4.0.3'
 gem 'haml-rails'
 gem 'uglifier', '~> 2.5.0'
