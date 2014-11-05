@@ -11,9 +11,9 @@ namespace :custom_cards do
     puts "Installing Custom Tahi Card: #{engine_name}"
     engine_class_name = engine_name.camelize
 
-    # Then, run the rake task
-    Rake::Task["data:create_task_types"].invoke
-    puts "Successfully ran `rake data:create_task_types` for #{engine_name}"
+    # initialize the task model to call `register_task`
+    full_task_name = "#{engine_class_name}::#{engine_class_name}Task".constantize
+    Journal.all.each { |j| JournalServices::CreateDefaultTaskTypes.call(j) }
 
     needle = "### DO NOT DELETE OR EDIT. AUTOMATICALLY MOUNTED CUSTOM TASK CARDS GO HERE ###"
     insert_after("config/routes.rb", needle, "  mount #{engine_class_name}::Engine => '/'")
