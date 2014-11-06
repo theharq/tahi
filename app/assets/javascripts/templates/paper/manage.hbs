@@ -33,7 +33,7 @@
   <div class="columns">
     {{add-column position=0 action="addPhase" bonusClass="first-add-column"}}
     {{#each phase in sortedPhases}}
-      {{#view "ETahi.ManuscriptManagerColumnView" content=phase}}
+      {{#view "manuscriptManagerColumn" content=phase}}
         {{add-column position=view.nextPosition action='addPhase'}}
 
         {{view "phaseHeader" phase=phase}}
