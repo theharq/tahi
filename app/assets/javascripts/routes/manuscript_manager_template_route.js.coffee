@@ -14,8 +14,8 @@ ETahi.ManuscriptManagerTemplateRoute = Ember.Route.extend
         journalTaskType: taskType
         phaseTemplate: phaseTemplate
         template: [])
-      if taskType.get('taskType.kind') == "Task"
-        @controllerFor('adHocTemplateOverlay').setProperties(phaseTemplate: phaseTemplate, model: newTask)
+      if taskType.get('kind') == "Task"
+        @controllerFor('adHocTemplateOverlay').setProperties(phaseTemplate: phaseTemplate, model: newTask, isNewTask: true)
         @render('adHocTemplateOverlay',
           into: 'application'
           outlet: 'overlay'

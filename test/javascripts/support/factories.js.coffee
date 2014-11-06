@@ -2,6 +2,9 @@ ETahi.Factory =
 
   typeIds: {}
 
+  resetFactoryIds: ->
+    @typeIds = {}
+
   getNewId: (type) ->
     typeIds = @typeIds
     if !typeIds[type]
@@ -35,12 +38,15 @@ ETahi.Factory =
     currentValues = model[key]
     model[key] = _.union(currentValues, values)
 
+
   setHasMany: (model, models, options={}) ->
     keyName = options.keyName || _.first(models)._rootKey
 
+    deNamespace = Tahi.utils.deNamespaceTaskType
+
     if options.embed
       key = keyName + "s"
-      modelIds = _.map(models, (t) -> {id: t.id, type: t.type})
+      modelIds = _.map(models, (t) -> {id: t.id, type: deNamespace(t.type)})
     else
       key = keyName + "_ids"
       modelIds = _.pluck(models, "id")
@@ -156,6 +162,11 @@ ETahi.Factory =
     @addHasMany(paper, [newPhase], {inverse: 'paper'})
     newPhase
 
+  createAuthor: (paper, attrs={})  ->
+    newAuthor = @createRecord('Author', attrs)
+    @addHasMany(paper, [newAuthor], {inverse: 'paper'})
+    newAuthor
+
   createTask: (type, paper, phase, attrs={}) ->
     newTask = @createRecord(type, _.extend(attrs, {lite_paper_id: paper.id}))
     @addHasMany(paper, [newTask], {inverse: 'paper', embed: true})
@@ -173,11 +184,9 @@ ETahi.Factory =
     newPhaseTemplate
 
   createJournalTaskType: (journal, taskType) ->
-    tt = @createRecord('TaskType', kind: taskType.kind)
-    jtt = @createRecord('JournalTaskType', title: taskType.title)
-    @setForeignKey(jtt, tt)
+    jtt = @createRecord('JournalTaskType', title: taskType.title, kind: taskType.kind)
     @addHasMany(journal, [jtt], {inverse: 'journal'})
-    [tt, jtt]
+    jtt
 
 ETahi.FactoryAttributes = {}
 ETahi.FactoryAttributes.User =
@@ -200,6 +209,14 @@ ETahi.FactoryAttributes.Journal =
   manuscript_manager_template_ids: []
   role_ids: []
   manuscript_css: null
+
+ETahi.FactoryAttributes.Author =
+  _rootKey: 'author'
+  id: null
+  first_name: "Dave"
+  last_name: "Thomas"
+  paper_id: null
+  position: 1
 
 ETahi.FactoryAttributes.Paper =
   _rootKey: 'paper'
@@ -261,6 +278,49 @@ ETahi.FactoryAttributes.Task =
   participant_ids: []
   comment_ids: []
 
+ETahi.FactoryAttributes.FigureTask =
+  _rootKey: 'task'
+  id: null
+  title: "Upload Figures"
+  type: "FigureTask"
+  completed: false
+  body: []
+  paper_title: "Foo"
+  role: "admin"
+  phase_id: null
+  paper_id: null
+  lite_paper_id: null
+  assignee_ids: []
+  participant_ids: []
+  comment_ids: []
+
+ETahi.FactoryAttributes.FinancialDisclosureTask =
+  _rootKey: 'task'
+  body: []
+  comment_ids: []
+  completed: false
+  funder_ids: []
+  id: null
+  lite_paper_id: null
+  paper_id: null
+  paper_title: "Test"
+  participation_ids: []
+  phase_id: null
+  question_ids: []
+  role: "author"
+  title: "Financial Disclosure"
+  type: "StandardTasks::FinancialDisclosureTask"
+
+ETahi.FactoryAttributes.Funder =
+  _rootKey: 'funder'
+  author_ids: []
+  funder_had_influence: false
+  funder_influence_description: null
+  grant_number: null
+  id: null
+  name: "Monsanto"
+  task_id: null
+  website: "www.monsanto.com"
 ETahi.FactoryAttributes.Comment =
   _rootKey: 'comment'
   id: null

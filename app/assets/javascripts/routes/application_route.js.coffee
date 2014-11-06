@@ -11,21 +11,15 @@ ETahi.ApplicationRoute = Ember.Route.extend ETahi.AnimateElement,
       @router.one('didTransition', spinner, 'stop')
 
     error: (response, transition, originRoute) ->
+      oldState = transition.router.oldState
+      transitionMsg = if oldState
+                        lastRoute = _.last(oldState.handlerInfos).name
+                        "Error in transition from #{lastRoute} to #{transition.targetName}"
+                      else
+                        "Error in transition into #{transition.targetName}"
+      @logError(transitionMsg + "\n" + response.message + "\n" + response.stack + "\n")
       transition.abort()
       @get('spinner')?.stop()
-
-    createAdhocTask: (phase) ->
-      paper = @controllerFor('paperManage').get('model')
-      newTask = @store.createRecord 'task',
-        phase: phase
-        type: 'Task'
-        paper: paper
-        title: 'New Ad-Hoc Card'
-
-      newTask.save().then =>
-        @send('viewCard', newTask)
-
-      false
 
     showMessageCreationOverlay: (phase) ->
       @send('showNewCardOverlay', 'newMessageTask', 'MessageTask', phase)
