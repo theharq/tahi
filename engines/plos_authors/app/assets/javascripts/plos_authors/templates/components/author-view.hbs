@@ -1,5 +1,5 @@
 {{#unless editState}}
-  <div class="authors-overlay-item--text">
+  <div class="authors-overlay-item-text">
     <div class="author-name">{{plosAuthor.fullName}}</div>
     {{plosAuthor.email}}<br>
     {{plosAuthor.title}} &nbsp; &nbsp; {{plosAuthor.department}}
@@ -8,14 +8,14 @@
   </div>
 
   {{#if hoverState}}
-    <div class="authors-overlay-item--actions">
+    <div class="authors-overlay-item-actions">
       <div class="drag"></div>
       <div class="actions">
         <div class="action" {{action "toggleEditForm"}}>
-          <span class="glyphicon glyphicon-pencil scaleIn"></span>
+          <span class="glyphicon glyphicon-pencil animation-scale-in"></span>
         </div>
         <div class="action" {{action "toggleDeleteConfirmation"}}>
-          <span class="glyphicon glyphicon-trash scaleIn"></span>
+          <span class="glyphicon glyphicon-trash animation-scale-in"></span>
         </div>
       </div>
     </div>
@@ -23,16 +23,15 @@
 {{/unless}}
 
 {{#if editState}}
-  {{add-author-form
-    newAuthor=plosAuthor
-    institutions=institutions
-    hideAuthorForm="toggleEditForm"
-    saveAuthor="save"
-    errors=errors}}
+  {{add-author-form newAuthor=plosAuthor
+                    institutions=institutions
+                    hideAuthorForm="toggleEditForm"
+                    saveAuthor="save"
+                    errors=errors}}
 {{/if}}
 
 {{#if deleteState}}
-  <div class="authors-overlay-item--delete">
+  <div class="authors-overlay-item-delete">
     <p>This will permanently delete the author. Are you sure?</p>
     <button class="button-secondary button--green knockout" {{action "toggleDeleteConfirmation"}}>Cancel</button>
     <button class="button-secondary button--green knockout" {{action "delete"}}>Delete Forever</button>

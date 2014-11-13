@@ -1,7 +1,6 @@
 ETahi.AuthorViewComponent = Ember.Component.extend DragNDrop.Dragable,
-  layoutName: "plos_authors/components/author-view"
+  layoutName: 'plos_authors/components/author-view'
   classNames: ['authors-overlay-item']
-  classNameBindings: ['hoverState:__hover', 'isEditable:__editable']
 
   hoverState: false
   deleteState: false
@@ -23,11 +22,11 @@ ETahi.AuthorViewComponent = Ember.Component.extend DragNDrop.Dragable,
     ETahi.set('dragItem', @get('plosAuthor'))
 
   dragEnd: (e) ->
-    DragNDrop.draggingStopped('.author-drop-target')
+    DragNDrop.draggingStopped('.author-overlay-drop-target')
 
   actions:
     delete: ->
-      @$().fadeOut 250, =>
+      @$().fadeOut 150, =>
         @sendAction 'delete', @get('plosAuthor')
 
     save: ->

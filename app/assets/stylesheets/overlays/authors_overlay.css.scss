@@ -5,7 +5,7 @@
 }
 
 
-.authors-overlay-item--text {
+.authors-overlay-item-text {
   padding: 15px 20px;
   font-size: 16px;
   text-overflow: ellipsis;
@@ -21,12 +21,9 @@
 }
 
 
-.authors-overlay-item--actions {
+.authors-overlay-item-actions {
   @include position(absolute, 0px 0px 0px 0px);
-  display: none;
-  color: #fff;
-  font-size: 40px;
-  text-align: center;
+  background: rgba(68, 175, 54, 0.7);
 
   .drag {
     @include position(absolute, 4px 4px auto 4px);
@@ -58,6 +55,8 @@
 
     .action {
       @include position(absolute, 0px auto 0px auto);
+      color: #fff;
+      font-size: 40px;
       cursor: pointer;
       opacity: 0.85;
 
@@ -78,13 +77,7 @@
   }
 }
 
-.__hover.__editable .authors-overlay-item--actions {
-  display: block;
-  background: rgba(68, 175, 54, 0.7);
-}
-
-
-.authors-overlay-item--delete {
+.authors-overlay-item-delete {
   @include position(absolute, 0px 0px 0px 0px);
   padding: 20px 30px 0 30px;
   color: #fff;
@@ -95,7 +88,7 @@
 }
 
 
-.author-drop-target {
+.author-overlay-drop-target {
   height: 5px;
   margin-bottom: 5px;
 
