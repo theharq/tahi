@@ -6,8 +6,8 @@ ETahi.initializer
     errorPath = '/errors'
 
     logError = (msg) ->
-      if window.teaspoonTesting == true
-        console.log("ERROR: " + msg)
+      # if window.teaspoonTesting == true
+      console.log("ERROR: " + msg)
         
     container.register('logError:main', logError , instantiate: false)
     application.inject('route', 'logError', 'logError:main')

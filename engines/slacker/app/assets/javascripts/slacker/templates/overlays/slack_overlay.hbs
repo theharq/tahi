@@ -1,0 +1,10 @@
+<h1>Slacker</h1>
+
+{{#each message in model.slackMessages}}
+  <p><strong>{{message.username}}</strong>: {{message.message}} </p>
+{{else}}
+  <p> No messages so far </p>
+{{/each}}
+
+{{textarea value=message}}
+<button {{action "share"}}> Share </button>
