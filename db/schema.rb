@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124165602) do
+ActiveRecord::Schema.define(version: 20141120164856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -298,14 +298,6 @@ ActiveRecord::Schema.define(version: 20141124165602) do
   end
 
   add_index "roles", ["kind"], name: "index_roles_on_kind", using: :btree
-
-  create_table "slacker_slack_messages", force: true do |t|
-    t.string   "username"
-    t.text     "message"
-    t.integer  "slack_task_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "standard_tasks_funded_authors", force: true do |t|
     t.integer "author_id"
