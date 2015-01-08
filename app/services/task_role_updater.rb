@@ -4,7 +4,7 @@ class TaskRoleUpdater
   def initialize(task, user_id, paper_role_name)
     @task = task
     @paper = task.paper
-    @user = User.find(user_id)
+    @user = user_id ? User.find(user_id) : nil
     @paper_role_name = paper_role_name
   end
 

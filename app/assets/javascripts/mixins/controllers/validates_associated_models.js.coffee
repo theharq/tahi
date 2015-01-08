@@ -2,7 +2,8 @@ ETahi.ValidatesAssociatedModels = Ember.Mixin.create
   validationErrors: {}
 
   setValidationErrors: (errors) ->
-    @set('validationErrors', Tahi.utils.camelizeKeys(errors))
+    if errors
+      @set('validationErrors', Tahi.utils.camelizeKeys(errors))
 
   clearValidationErrors: ->
     @set('validationErrors', {})
