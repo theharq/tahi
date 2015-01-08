@@ -1,10 +1,6 @@
 <h1>Invite Editor</h1>
 
-{{#if assigned}}
-  {{unbound user-thumbnail editor}}
-  {{editor.fullName}} is now the editor.
-  <div class="glyphicon glyphicon-trash" {{action "removeEditor"}}></div>
-{{else}}
+{{#if showEditForm}}
   <label for="editor">Email</label>
   {{select-2-single value=""
              class="editor-select2"
@@ -18,4 +14,8 @@
              placeholder="Please select editor"}}
 
    <div class="button-primary button--green" {{action "saveEditor"}}>Invite</div>
+{{else}}
+  {{unbound user-thumbnail editor}}
+  {{editor.fullName}} is now the editor.
+  <div class="glyphicon glyphicon-trash" {{action "removeEditor"}}></div>
  {{/if}}

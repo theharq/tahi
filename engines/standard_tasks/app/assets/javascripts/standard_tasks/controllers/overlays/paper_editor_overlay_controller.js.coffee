@@ -1,5 +1,7 @@
 ETahi.PaperEditorOverlayController = ETahi.TaskController.extend
-  assigned: false
+  showEditForm: (->
+    !@get('editor') || @get('model.isDirty')
+  ).property('editor', 'model.isDirty')
 
   select2RemoteSource: (->
     url: @get('select2RemoteUrl')
@@ -22,12 +24,10 @@ ETahi.PaperEditorOverlayController = ETahi.TaskController.extend
 
   actions:
     removeEditor: ->
-      @set 'assigned', false
       @set 'editor', undefined
       @send 'saveModel'
 
     saveEditor: ->
-      @set 'assigned', true
       @send('saveModel')
 
     inviteEditor: (select2User) ->
