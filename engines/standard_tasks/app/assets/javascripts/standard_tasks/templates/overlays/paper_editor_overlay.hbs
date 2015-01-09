@@ -1,6 +1,6 @@
 <h1>Invite Editor</h1>
 
-{{#if showEditForm}}
+{{#if view.showEditForm}}
   <label for="editor">Email</label>
   {{select-2-single value=""
              class="editor-select2"
@@ -13,9 +13,11 @@
              remoteSource=select2RemoteSource
              placeholder="Please select editor"}}
 
-   <div class="button-primary button--green" {{action "saveEditor"}}>Invite</div>
+   <div class="button-primary button--green invite-editor-button" {{action "save" target="view"}}>Invite</div>
 {{else}}
-  {{unbound user-thumbnail editor}}
-  {{editor.fullName}} is now the editor.
-  <div class="glyphicon glyphicon-trash" {{action "removeEditor"}}></div>
- {{/if}}
+  {{user-thumbnail editor}}
+  <div class="invite-editor-text">
+    {{editor.fullName}} is now the editor.
+    <div class="glyphicon glyphicon-trash invite-editor-remove" {{action "remove" target="view"}}></div>
+  </div>
+{{/if}}

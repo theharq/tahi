@@ -1,8 +1,4 @@
 ETahi.PaperEditorOverlayController = ETahi.TaskController.extend
-  showEditForm: (->
-    !@get('editor') || @get('model.isDirty')
-  ).property('editor', 'model.isDirty')
-
   select2RemoteSource: (->
     url: @get('select2RemoteUrl')
     dataType: "json"
