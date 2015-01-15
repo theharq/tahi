@@ -9,7 +9,7 @@ ETahi.DocumentDownloadService = Em.Namespace.create
         jobId = data['job']['id']
         @checkJobState(jobId)
       error: (data) ->
-        throw new Error("Could not download #{@downloadFormat}")
+        throw new Error("Failed to export #{@downloadFormat}")
 
   checkJobState: (jobId) ->
     status = ""
@@ -21,7 +21,7 @@ ETahi.DocumentDownloadService = Em.Namespace.create
         if job.state == "converted"
           Tahi.utils.windowLocation job.url
         else if job.state == "errored"
-          alert("The download failed")
+          throw new Error("Failed to generate #{@downloadFormat}")
         else
           setTimeout (=>
             @checkJobState jobId
