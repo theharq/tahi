@@ -4,6 +4,7 @@ Tahi::Application.routes.draw do
   mount SupportingInformation::Engine => '/', as: 'supporting_information'
   mount PlosAuthors::Engine => '/', as: 'plos_custom_authors'
   ### DO NOT DELETE OR EDIT. AUTOMATICALLY MOUNTED CUSTOM TASK CARDS GO HERE ###
+  mount SampleCard::Engine => '/'
 
   if Rails.env.development? || Rails.env.test?
     mount QUnit::Rails::Engine => '/qunit'

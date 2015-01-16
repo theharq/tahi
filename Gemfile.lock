@@ -41,6 +41,12 @@ GIT
       activesupport (>= 4.1.0)
 
 PATH
+  remote: ../tahi-sample-card
+  specs:
+    sample_card (0.0.1)
+      rails (~> 4.2.0)
+
+PATH
   remote: engines/plos_authors
   specs:
     plos_authors (0.0.3)
@@ -644,6 +650,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubyzip
+  sample_card!
   sass-rails
   scss-lint
   sdoc
