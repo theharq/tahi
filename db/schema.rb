@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208152459) do
+ActiveRecord::Schema.define(version: 20150119205234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -273,6 +273,14 @@ ActiveRecord::Schema.define(version: 20141208152459) do
   end
 
   add_index "roles", ["kind"], name: "index_roles_on_kind", using: :btree
+
+  create_table "sample_card_lexemes", force: :cascade do |t|
+    t.integer  "journal_id"
+    t.text     "word_form"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "active"
+  end
 
   create_table "standard_tasks_funded_authors", force: :cascade do |t|
     t.integer "author_id"

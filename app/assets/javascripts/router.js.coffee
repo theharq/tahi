@@ -2,6 +2,8 @@
 ETahi.Router.map ()->
   @route('flow_manager')
 
+  @resource 'lexemes'
+
   @resource 'paper', { path: '/papers/*paper_id' }, ->
     @route('edit')
     @route('manage')

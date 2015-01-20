@@ -73,7 +73,7 @@ class TasksController < ApplicationController
   end
 
   def task_email_params
-    params.require(:task).permit(:subject, :body, recipients: []).tap do |whitelisted|
+    params.require(:task).permit(:subject, :body, :word_form, recipients: []).tap do |whitelisted|
       whitelisted[:subject] ||= "No subject"
       whitelisted[:body] ||= "Nothing to see here."
       whitelisted[:recipients] ||= []
