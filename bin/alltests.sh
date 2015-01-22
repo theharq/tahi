@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# you may have some gems you need to install, or tests to migrate.
-bin/bigrate
-
 #
 # acts almost like a CI server, for when you want to run the tests locally,
 # because you know they will run faster.
