@@ -174,4 +174,27 @@ namespace :data do
     desc "Snapshot, copy, and import local database to Heroku"
     task :import_snapshot => [:setup, :snapshot_local, :copy_snapshot_to_s3, :export]
   end
+
+  task validate: :environment do
+    tables = ActiveRecord::Base.connection.tables;nil
+
+    tables.each do |table|
+      begin
+        z = table.singularize.camelize.constantize
+        records = z.all;nil
+
+        i = 0
+        records.each do |record|
+          if !record.valid?
+            i = i + 1
+            puts record.inspect
+          end
+        end;nil
+
+        p "====> #{i} Issues in #{z.to_s}"
+      rescue
+        p "error on #{table}... this table probably does not correspond to a Rails model"
+      end
+    end;nil
+  end
 end
