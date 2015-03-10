@@ -34,6 +34,12 @@ GIT
       activesupport (>= 4.1.0)
 
 PATH
+  remote: engines/editor_assignment
+  specs:
+    editor_assignment (0.0.1)
+      rails (~> 4.2.0)
+
+PATH
   remote: engines/plos_authors
   specs:
     plos_authors (0.0.3)
@@ -495,6 +501,7 @@ DEPENDENCIES
   devise
   dotenv
   dotenv-deployment
+  editor_assignment!
   ember-cli-rails
   factory_girl_rails
   faraday_middleware

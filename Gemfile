@@ -13,6 +13,7 @@ gem 'plos_authors', path: 'engines/plos_authors'
 gem 'standard_tasks', path: 'engines/standard_tasks'
 gem 'supporting_information', path: 'engines/supporting_information'
 gem 'upload_manuscript', path: 'engines/upload_manuscript'
+gem 'editor_assignment', path: 'engines/editor_assignment'
 
 # Gems
 gem 'rails', '4.2.0'
